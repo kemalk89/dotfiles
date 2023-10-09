@@ -1,15 +1,16 @@
 [alias]
 	l = log --pretty=format:"%C(yellow)%h\\ %C(cyan)%ad\\ %Cgreen%d\\ %Creset%s\\%Cblue\\ [%cn,\\ %ce]" --decorate --date=format:'%Y-%m-%d %H:%M' --graph -n 10
-    s = status -s
+    	s = status -s
+	c = "!f() { git checkout -b $1; }; f"
 	cr = "!f() { echo \"Checkout remote repository origin/$1\"; git fetch; git branch -D $1; git checkout --track origin/$1; }; f"
 	cb = "!f() { echo \"Checkout branch. If exists already delete the old one.\"; branch="$1"; git branch -D "$branch"; git checkout -b "$branch"; }; f"
 	ri = "!f() { git rebase -i HEAD~$1; }; f"
-    remotes = remote --verbose
+    	remotes = remote --verbose
 	cleanup = "!f() { git reset --hard HEAD .; git checkout .; git clean -fd; }; f"
 	syncwith = "!f() { echo \"Sync local history with origin/$1\"; git fetch origin; git reset --hard origin/$1; git cleanup; }; f"
 	rlb = "!f() { echo \"Removing local branch $1\"; git branch -d $1; }; f"
-    ue = "!f() { echo \"Setting username to $1 and email to $2 for this repository\"; git config user.name $1; git config user.email $2; }; f"
-    whoami = !git config user.name && git config user.email
-    aliases = config --get-regexp alias
+    	ue = "!f() { echo \"Setting username to $1 and email to $2 for this repository\"; git config user.name $1; git config user.email $2; }; f"
+    	whoami = !git config user.name && git config user.email
+    	aliases = config --get-regexp alias
 [pull]
 	rebase = false
